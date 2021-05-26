@@ -1,0 +1,16 @@
+{
+  "name": "mypl",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "parse":"nearleyc grammer.ne -o grammer.js && node parser"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nearley": "^2.20.1"
+  }
+}
