@@ -1,4 +1,5 @@
-program -> var_assignment {% id %}
+program ->
+        var_assignment {% id %}
         | number {% id %}
         
 var_assignment -> identifier "=" number 
@@ -12,7 +13,12 @@ var_assignment -> identifier "=" number
         }
     %}
 
-identifier -> [A-z]:+ {% id %}
+identifier -> [A-z]:+ 
+            {% 
+                
+                data => data[0].join('')
+
+            %}
 
 number -> digits 
         {% 
