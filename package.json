@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "nearleyc test.ne -o test.js && node parser",
-    "parse":"nearleyc grammer.ne -o grammer.js && node parser"
+    "parse": "nearleyc grammer.ne -o grammer.js && node parser"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "mz": "^2.7.0",
     "nearley": "^2.20.1"
   }
 }

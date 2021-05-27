@@ -35,7 +35,8 @@ var grammar = {
     {"name": "operator", "symbols": [{"literal":"*"}], "postprocess": id},
     {"name": "operator", "symbols": [{"literal":"/"}], "postprocess": id},
     {"name": "operator", "symbols": [{"literal":"%"}], "postprocess": id},
-    {"name": "var_assignment", "symbols": ["identifier", "_", {"literal":"="}, "_", "expression"], "postprocess": 
+    {"name": "var_assignment$string$1", "symbols": [{"literal":":"}, {"literal":"="}], "postprocess": function joiner(d) {return d.join('');}},
+    {"name": "var_assignment", "symbols": ["identifier", "_", "var_assignment$string$1", "_", "expression"], "postprocess": 
             
          data =>  {
          return {

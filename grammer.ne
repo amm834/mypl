@@ -39,7 +39,7 @@ operator
          | "/" {% id %}
          | "%" {% id %}
 
-var_assignment -> identifier _ "=" _ expression 
+var_assignment -> identifier _ ":=" _ expression 
     {%
     
          data =>  {
