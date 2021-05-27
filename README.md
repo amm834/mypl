@@ -131,7 +131,7 @@ __ -> [ ]:+
 ]
 ```
 
-##.Transpiled Higher Level Code
+## Transpiled Higher Level Code
 ```js
 let n = 1;
 ```
