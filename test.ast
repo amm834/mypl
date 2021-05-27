@@ -2,31 +2,6 @@
 	{
 		"type": "var_assignment",
 		"varname": "n",
-		"value": 10
-	},
-	{
-		"type": "while_loop",
-		"condition": {
-			"type": "binary_expression",
-			"right": "n",
-			"operator": ">",
-			"left": 10
-		},
-		"body": [
-			{
-				"type": "var_assignment",
-				"varname": "n",
-				"value": {
-					"type": "binary_expression",
-					"right": "n",
-					"operator": "+",
-					"left": 1
-				}
-			},
-			{
-				"type": "print_statement",
-				"expression": "n"
-			}
-		]
+		"value": 1
 	}
 ]

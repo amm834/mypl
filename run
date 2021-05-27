@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# ©2021 by Aung Myat Moe
+__FILENAME=$1
+
+if [[ $# == 0 ]]; then
+  echo "Usage ./run app.mypl"
+  exit 1
+fi
+
+function boot() {
+  __FILE_FIRST_OFFSET=`echo $__FILENAME | cut --delimiter="." --fields=1` 
+  node translator/parser.js $__FILENAME 
+  node translator/translator.js "$__FILE_FIRST_OFFSET.ast"
+  echo -e "\e[42;1m Output \e[0m"
+  node $__FILE_FIRST_OFFSET
+}
+
+
+if [[ `which node` ]]; then
+
+boot 
+else
+echo "Please install node js first."
+fi

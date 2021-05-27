@@ -7,9 +7,9 @@ async function main() {
   const contents = (await fs.readFile(filename)).toString();
   const ast = JSON.parse(contents);
   const jsSourceCode = generatorJS(ast, []);
-  console.log(jsSourceCode);
+  //console.log(jsSourceCode);
   await fs.writeFile(outputFilename, jsSourceCode);
-  console.log(`Generated ${outputFilename}`);
+  console.log(`Generated \`${outputFilename}\``);
 }
 
 function generatorJS(statements, declaredVariables) {
@@ -21,7 +21,7 @@ function generatorJS(statements, declaredVariables) {
         lines.push(`let ${statement.varname} = ${value};`);
         declaredVariables.push(statement.varname);
       } else {
-        lines.push(`${statement.varname} = ${value}`);
+        lines.push(`${statement.varname} = ${value};`);
       }
     } else if (statement.type === "print_statement") {
       const expression = generateJSForExpression(statement.expression);
@@ -29,9 +29,9 @@ function generatorJS(statements, declaredVariables) {
     } else if (statement.type === "while_loop") {
       const condition = generateJSForExpression(statement.condition);
       const body = generatorJS(statement.body, declaredVariables)
-                    .split("\n")
-                    .map(line => "  " + line)
-                    .join("\n");
+      .split("\n")
+      .map(line => "  " + line)
+      .join("\n");
       lines.push(`while(${condition}){\n${body}\n}`);
     }
   }
@@ -44,7 +44,7 @@ function generateJSForExpression(expression) {
       const left = generateJSForExpression(expression.left);
       const right = generateJSForExpression(expression.right);
       const operator = expression.operator;
-      return `${right} ${operator} ${left};`;
+      return `${right} ${operator} ${left}`;
     }
   } else {
     return expression;
