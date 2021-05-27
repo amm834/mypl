@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "nearleyc test.ne -o test.js && node parser",
-    "parse": "nearleyc grammer.ne -o grammer.js && node parser"
+    "parse": "nearleyc grammer.ne -o grammer.js "
   },
   "keywords": [],
   "author": "",

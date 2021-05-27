@@ -5,7 +5,7 @@ const path = require('path');
 
 
 async function main() {
-    // create parser instance
+    // create the parser instance
     const parser = new nearley.Parser(nearley.Grammar.fromCompiled(grammar));
     const filename = process.argv[2];
     const outputFilename = path.basename(filename, ".mypl") + ".ast";
@@ -13,7 +13,7 @@ async function main() {
     try {
         parser.feed(sourceCode);
         const ast = parser.results[0];
-        await fs.writeFile(outputFilename,JSON.stringify(ast,null));
+        await fs.writeFile(outputFilename, JSON.stringify(ast, null, "\t"));
         console.log("Parsed Successfully.");
         console.log(`${outputFilename} is created.`);
     }catch(e) {

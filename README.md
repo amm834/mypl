@@ -5,6 +5,6 @@ This transplier is just for my learning purposes and you can learn this from **@
 
 # Todos
 
-- CFG and Parsing
+- [ x ] CFG and Parsing
 - Generating AST
 - Convert AST to JS higher level source codes
