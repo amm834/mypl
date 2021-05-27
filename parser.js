@@ -6,10 +6,11 @@ const parser = new nearley.Parser(nearley.Grammar.fromCompiled(grammar));
 
 // Parse something!
 try {
-  parser.feed("a=123");
-  
-  console.log("Parsed => ",parser.results);
+  parser.feed("print 10 + 49.3 + 10");
+
+  console.log("Parsed => ", parser.results[0]);
 }catch(e) {
-  console.log("Unexpected Error: ", `${e.message}`)
+  
+  console.log("Unexpected", `${e.message}`)
 }
 // parser.results is an array of possible parsings.
