@@ -6,22 +6,33 @@ async function main() {
   const outputFilename = path.basename(filename, ".ast") + ".js";
   const contents = (await fs.readFile(filename)).toString();
   const ast = JSON.parse(contents);
-  const jsSourceCode = generatorJS(ast);
+  const jsSourceCode = generatorJS(ast, []);
   console.log(jsSourceCode);
   await fs.writeFile(outputFilename, jsSourceCode);
   console.log(`Generated ${outputFilename}`);
 }
 
-function generatorJS(statements) {
+function generatorJS(statements, declaredVariables) {
   let lines = [];
   for (statement of statements) {
     if (statement.type == "var_assignment") {
       const value = generateJSForExpression(statement.value);
-      lines.push(`let ${statement.varname} = ${value};`);
+      if (declaredVariables.indexOf(statement.varname) === -1) {
+        lines.push(`let ${statement.varname} = ${value};`);
+        declaredVariables.push(statement.varname);
+      } else {
+        lines.push(`${statement.varname} = ${value}`);
+      }
     } else if (statement.type === "print_statement") {
       const expression = generateJSForExpression(statement.expression);
       lines.push(`console.log(${expression});`);
-      
+    } else if (statement.type === "while_loop") {
+      const condition = generateJSForExpression(statement.condition);
+      const body = generatorJS(statement.body, declaredVariables)
+                    .split("\n")
+                    .map(line => "  " + line)
+                    .join("\n");
+      lines.push(`while(${condition}){\n${body}\n}`);
     }
   }
   return lines.join("\n");
@@ -33,7 +44,7 @@ function generateJSForExpression(expression) {
       const left = generateJSForExpression(expression.left);
       const right = generateJSForExpression(expression.right);
       const operator = expression.operator;
-      return `${right} ${operator} ${left}`;
+      return `${right} ${operator} ${left};`;
     }
   } else {
     return expression;
