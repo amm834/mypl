@@ -6,11 +6,11 @@ statements
             data => [data[1]]
         %}
         
-         | statement "\n" statements 
+         | _ statement _ "\n" statements 
          
          {%
          
-            data => [ data[0], ...data[2] ]
+            data => [ data[1], ...data[4] ]
             
          %}
 

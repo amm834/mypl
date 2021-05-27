@@ -9,9 +9,9 @@ var grammar = {
     {"name": "statements", "symbols": ["_", "statement", "_"], "postprocess":  
         data => [data[1]]
                 },
-    {"name": "statements", "symbols": ["statement", {"literal":"\n"}, "statements"], "postprocess": 
+    {"name": "statements", "symbols": ["_", "statement", "_", {"literal":"\n"}, "statements"], "postprocess": 
                  
-        data => [ data[0], ...data[2] ]
+        data => [ data[1], ...data[4] ]
         
                  },
     {"name": "statement", "symbols": ["var_assignment"], "postprocess": id},

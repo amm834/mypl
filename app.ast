@@ -1,32 +1,36 @@
 [
 	{
 		"type": "var_assignment",
-		"varname": "n",
+		"varname": "a",
 		"value": 1
 	},
 	{
-		"type": "while_loop",
-		"condition": {
+		"type": "var_assignment",
+		"varname": "b",
+		"value": 2
+	},
+	{
+		"type": "var_assignment",
+		"varname": "c",
+		"value": {
 			"type": "binary_expression",
-			"right": "n",
-			"operator": ">",
-			"left": 10
-		},
-		"body": [
-			{
-				"type": "var_assignment",
-				"varname": "n",
-				"value": {
-					"type": "binary_expression",
-					"right": "n",
-					"operator": "+",
-					"left": 1
-				}
-			},
-			{
-				"type": "print_statement",
-				"expression": "n"
+			"right": "a",
+			"operator": "+",
+			"left": {
+				"type": "binary_expression",
+				"right": "b",
+				"operator": "+",
+				"left": 10
 			}
-		]
+		}
+	},
+	{
+		"type": "print_statement",
+		"expression": {
+			"type": "binary_expression",
+			"right": "a",
+			"operator": "+",
+			"left": "b"
+		}
 	}
 ]
