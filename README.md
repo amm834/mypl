@@ -4,7 +4,7 @@ Transpiler  that will  give the higher level source code of JS
 This transplier is just for my learning purposes and you can learn this from **@airportyh**'s YouTube channel. 
 # Setup
 
-```
+```sh
 # Clone This Repo
 git clone https://github.com/amm834/mypl
 cd mypl/
@@ -51,7 +51,7 @@ n := n + 1
 ]
 ```
 
-# Step of Compiling
+# Steps of Compilation
 
 ## Source Code
 
@@ -60,7 +60,7 @@ n := 1
 ```
 ## CFG Grammer
 
-```
+```ne
 program -> statements {% id %}
 
 statements 
@@ -121,7 +121,7 @@ __ -> [ ]:+
 
 ## AST
 
-```
+```json
 [
 	{
 		"type": "var_assignment",
